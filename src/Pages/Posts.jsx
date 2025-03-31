@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import CreatePostModal from "./Create";
 
 const Posts = () => {
     const [posts, setPosts] = useState([]);
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
         const fetchPosts = async () => {
             const token = localStorage.getItem("token");
+           
             try {
                 const response = await axios.get("http://127.0.0.1:8000/api/posts/user", {
                     headers: {
@@ -43,7 +46,7 @@ const Posts = () => {
     };
 
     const handleCreateNew = () => {
-        navigate("/create-post");
+        setIsModalOpen(true);
     };
 
     return (
@@ -57,7 +60,7 @@ const Posts = () => {
                     Create New
                 </button>
             </div>
-
+            <CreatePostModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
             <div className="overflow-x-auto bg-white shadow-lg rounded-lg">
                 <table className="min-w-full table-auto border-collapse">
                     <thead className="bg-blue-100">
