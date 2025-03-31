@@ -16,6 +16,8 @@ export function Login() {
             
             if(response.status===200){
                 alert("Login Successful")
+                localStorage.setItem('token',response.data.token)
+                localStorage.setItem('user',JSON.stringify(response.data.user))
                 window.location.href="/home"
             }else{
                 alert("Login Failed")
