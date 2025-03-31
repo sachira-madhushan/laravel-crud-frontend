@@ -9,7 +9,7 @@ const CreatePostModal = ({ isOpen, onClose }) => {
     const handleCreatePost = async () => {
         const token = localStorage.getItem("token");
         try {
-            const response = await axios.post("http://127.0.0.1:8000/api/posts/create",
+            const response = await axios.post("/api/posts/create",
                 {
                     title: postTitle,
                     body: postBody,

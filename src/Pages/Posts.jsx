@@ -13,7 +13,7 @@ const Posts = () => {
             const token = localStorage.getItem("token");
            
             try {
-                const response = await axios.get("http://127.0.0.1:8000/api/posts/user", {
+                const response = await axios.get("/api/posts/user", {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -34,7 +34,7 @@ const Posts = () => {
     const handleDelete = async (id) => {
         const token = localStorage.getItem("token");
         try {
-            await axios.delete(`http://127.0.0.1:8000/api/posts/${id}`, {
+            await axios.delete(`/api/posts/${id}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },

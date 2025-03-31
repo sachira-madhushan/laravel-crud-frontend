@@ -9,7 +9,7 @@ export function Login() {
         e.preventDefault();
     
         try {
-            const response=await axios.post('http://localhost:8000/api/users/login', {
+            const response=await axios.post('/api/users/login', {
                 email:email,
                 password:password,
             })
@@ -24,6 +24,7 @@ export function Login() {
             }
         } catch (error) {
             alert("Login Failed")
+            console.error("Login error:", error);
         }
     }
 

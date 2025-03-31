@@ -17,7 +17,7 @@ const UpdatePost = () => {
     useEffect(() => {
         const fetchPost = async () => {
             try {
-                const response = await axios.get(`http://127.0.0.1:8000/api/posts/${id}`);
+                const response = await axios.get(`/api/posts/${id}`);
                 setPost(response.data.post);
             } catch (err) {
                 setError("Failed to fetch post data.");
@@ -38,7 +38,7 @@ const UpdatePost = () => {
         setError("");
 
         try {
-            await axios.put(`http://127.0.0.1:8000/api/posts/${id}`, post,{
+            await axios.put(`/api/posts/${id}`, post,{
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
                     "Content-Type": "application/json",
